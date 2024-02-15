@@ -16,7 +16,7 @@ const pacifico = Pacifico({
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const stories = data.filter((story) => story.headlines.basic.includes(searchTerm));
+  const stories = data.filter((story) => story.headlines.basic.toLocaleLowerCase().trim().includes(searchTerm));
 
   return (
     <main>
@@ -47,7 +47,8 @@ export default function Home() {
                 <Image
                   src={`https://picsum.photos/id/${index}/450/300`}
                   alt={story.headlines.basic}
-                  width={450}  
+                  layout="responsive"
+                  width={450}
                   height={300}
                 />
                 <h2>{story.headlines.basic} <span>-&gt;</span></h2>
